@@ -24,6 +24,9 @@ public class HomeServiceImpl implements  HomeService {
     employeeRepository.save(employee);
     return  true;
   }
-
+  public Employee employeeDetails(int empId)
+  {
+    return employeeRepository.findOne(empId);
+  }
 }
 

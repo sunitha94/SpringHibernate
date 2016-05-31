@@ -24,9 +24,10 @@
       <td>${employee.empid}</td>
       <td>${employee.name}</td>
       <td><a href="/deleteEmp/${employee.empid}">delete</a></td>
+      <td><a href="/employees/${employee.empid}">update</a></td>
     </tr>
   </c:forEach>
-  <a href="/addEmployee">addEmplyee</a>
+  <a href="/addEmployee">AddEmployee</a>
 </table>
 </body>
 </html>

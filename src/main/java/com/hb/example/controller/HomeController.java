@@ -1,6 +1,6 @@
 package com.hb.example.controller;
 
-import com.hb.example.dao.EmpoyeeDao;
+import com.hb.example.dao.EmployeeDao;
 import com.hb.example.model.Employee;
 import com.hb.example.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class HomeController {
   @Autowired
   HomeService homeService;
   @Autowired
-  EmpoyeeDao employeeDao;
+  EmployeeDao employeeDao;
 
   @RequestMapping(value = "/")
   public String home() {
@@ -49,5 +49,16 @@ public String employeeForm(Model model){
     employeeDao.deleteEmployee(empId);
     return "redirect:/employees";
   }
+  @RequestMapping(value = "/employees/{empId}")
+  public String addEmployee(@PathVariable(value = "empId") int empId, Model model) {
+    model.addAttribute("employee", homeService.employeeDetails(empId));
+    return "editEmployee";
+  }
+  @RequestMapping(value = "/employees/update")
+  public String updateEmplyees(Employee employee, Model model) {
+    employeeDao.updateEmployee(employee);
+    return "redirect:/employees";
+  }
+
 }
 
