@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by ehc on 30/5/16.
  */
@@ -16,15 +18,28 @@ import org.springframework.transaction.annotation.Transactional;
 public class EmpoyeeDao {
   @Autowired
   SessionFactory sessionFactory;
-  public Employee createQuery() {
+
+  public List createQuery() {
+    /*Session session = sessionFactory.getCurrentSession();
+    Employee employee = (Employee) session.get(Employee.class, 2);
+    employee.setName("suni");*/
     Session session = sessionFactory.getCurrentSession();
-    Employee employee = (Employee) session.get(Employee.class, 1);
-    employee.setName("xyz");
-    session=sessionFactory.getCurrentSession();
-    session.save(employee);
-    session=sessionFactory.getCurrentSession();
-    Criteria criteria=
-   return employee;
+    Criteria criteria = session.createCriteria(Employee.class);
+    return criteria.list();
   }
 
+  public List emplyeesList() {
+    Session session = sessionFactory.getCurrentSession();
+    Criteria criteria = session.createCriteria(Employee.class);
+   // criteria.add(Restrictions.ilike("name", "s", MatchMode.ANYWHERE));
+    return criteria.list();
+  }
+  public boolean deleteEmployee(int empId)
+  {
+     Employee employee1=new Employee();
+    employee1.setEmpid(empId);
+    Session session=sessionFactory.getCurrentSession();
+    session.delete(employee1);
+    return true;
+  }
 }

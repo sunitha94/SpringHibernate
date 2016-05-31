@@ -17,14 +17,16 @@
   <tr>
     <td>Id</td>
     <td>Name</td>
+    <td>Action</td>
   </tr>
   <c:forEach var="employee" items="${employees}">
     <tr>
       <td>${employee.empid}</td>
       <td>${employee.name}</td>
-      <td>
+      <td><a href="/deleteEmp/${employee.empid}">delete</a></td>
     </tr>
   </c:forEach>
+  <a href="/addEmployee">addEmplyee</a>
 </table>
 </body>
 </html>

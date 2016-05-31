@@ -18,6 +18,12 @@ public class HomeServiceImpl implements  HomeService {
 
     return employeeRepository.findAll();
   }
+  public boolean createEmployee(Employee employee)
+  {
+
+    employeeRepository.save(employee);
+    return  true;
+  }
 
 }
 
