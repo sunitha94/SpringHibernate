@@ -54,7 +54,8 @@ public class EmployeeDao {
     Session session=sessionFactory.getCurrentSession();
     Criteria criteria=session.createCriteria(Employee.class);
     criteria.add(Restrictions.ilike("name",name, MatchMode.ANYWHERE));
-    return  criteria.list();
+    List<Employee> employee= criteria.list();
+      return employee;
   }
 
 }

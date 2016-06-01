@@ -13,13 +13,13 @@
   <script src="/script1.js"></script>
 
 </head>
-<body>
 <a href="/"><h1>Emplpoyees Page</h1></a>
-<a href="/addEmployee">AddEmployee</a>
+<a href="/addEmployee">AddEmployee</a></br></br>
 <input type="search" id="searchName">
-<input type="button" id="searchButton" value="search">
-<table>
-  <thead>
+<input type="button" id="searchButton" value="search"></br></br>
+<body id="bd">
+<table id="tb">
+  <thead id="th1">
   <tr>
     <th>Id</th>
     <th>Name</th>
@@ -37,8 +37,7 @@
   </c:forEach>
   </tbody>
 </table>
-<div id="result1"></div>
-<p id="error"></p>
+<p id="error-dialog-error-label"></p>
 </body>
 </html>
 
