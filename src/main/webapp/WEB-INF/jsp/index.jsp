@@ -12,6 +12,6 @@
 </head>
 <body>
 <h1>Welcome..!</h1>
-<a href="/employees">addStudent</a>
+<a href="/employees">ShowEmployees</a>
 </body>
 </html>

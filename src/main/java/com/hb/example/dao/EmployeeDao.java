@@ -4,6 +4,8 @@ import com.hb.example.model.Employee;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +33,7 @@ public class EmployeeDao {
   public List emplyeesList() {
     Session session = sessionFactory.getCurrentSession();
     Criteria criteria = session.createCriteria(Employee.class);
-    // criteria.add(Restrictions.ilike("name", "s", MatchMode.ANYWHERE));
+//    criteria.add(Restrictions.ilike("name", "s", MatchMode.ANYWHERE));
     return criteria.list();
   }
   public boolean deleteEmployee(int empId)
@@ -42,10 +44,17 @@ public class EmployeeDao {
     session.delete(employee);
     return true;
   }
-  public boolean updateEmployee(Employee employee){
-    System.out.println("employee : "+ employee);
-    Session session=sessionFactory.getCurrentSession();
+  public boolean updateEmployee(Employee employee) {
+    System.out.println("employee : " + employee);
+    Session session = sessionFactory.getCurrentSession();
     session.saveOrUpdate(employee);
     return true;
   }
+  public List searchEmployees(String name){
+    Session session=sessionFactory.getCurrentSession();
+    Criteria criteria=session.createCriteria(Employee.class);
+    criteria.add(Restrictions.ilike("name",name, MatchMode.ANYWHERE));
+    return  criteria.list();
+  }
+
 }

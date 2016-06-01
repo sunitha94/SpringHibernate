@@ -4,10 +4,15 @@ import com.hb.example.dao.EmployeeDao;
 import com.hb.example.model.Employee;
 import com.hb.example.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * Created by ehc on 30/5/16.
@@ -59,6 +64,10 @@ public String employeeForm(Model model){
     employeeDao.updateEmployee(employee);
     return "redirect:/employees";
   }
-
+  @RequestMapping(value = "/search",produces = MediaType.APPLICATION_JSON_VALUE)
+  @ResponseBody
+  public List<Employee> searchEmployee(@RequestParam(value = "name") String name){
+    return employeeDao.searchEmployees(name);
+  }
 }
 
