@@ -7,6 +7,7 @@ import com.hb.example.repository.EmployeeRepository;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ public class EmployeeDao {
   public List emplyeesList() {
     Session session = sessionFactory.getCurrentSession();
     Criteria criteria = session.createCriteria(Employee.class);
+    criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
 //    criteria.add(Restrictions.ilike("name", "s", MatchMode.ANYWHERE));
     return criteria.list();
   }
@@ -68,6 +70,7 @@ public class EmployeeDao {
     Session session = sessionFactory.getCurrentSession();
     Criteria criteria = session.createCriteria(Employee.class);
     criteria.add(Restrictions.ilike("name", name, MatchMode.ANYWHERE));
+    criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
     List<Employee> employee = criteria.list();
     return employee;
   }

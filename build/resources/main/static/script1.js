@@ -20,7 +20,7 @@ $(document).ready(function () {
               "<td>" + data[i].name + "</td>" +
               "<td>" + data[i].address.street +"</td>" +
               "<td>" + data[i].address.city +"</td>" +
-              "<td><a href='" + data[i].id + "'>Delete</a> <a href='" + data[i].id + "'>action</a></td>" +
+              "<td><a href='" + data[i].id + "'>Delete</a> <a href='" + data[i].id + "'>update</a></td>" +
               "</tr>"
         }
         if (template != null) {
