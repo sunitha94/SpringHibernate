@@ -1,5 +1,7 @@
 package com.hb.example.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 /**
@@ -15,7 +17,8 @@ public class Address {
   private String street;
   @Column(name = "city")
   private String city;
-  @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+  @JsonBackReference("employee-address")
+  @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "emp_id")
   private Employee employee;
 

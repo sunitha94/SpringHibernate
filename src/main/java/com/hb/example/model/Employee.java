@@ -1,5 +1,7 @@
 package com.hb.example.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 /**
@@ -13,7 +15,8 @@ public class Employee {
   private int id;
   @Column
   private String name;
-  @OneToOne(mappedBy = "employee",cascade = CascadeType.ALL,orphanRemoval = true)
+  @JsonManagedReference("employee-address")
+  @OneToOne(mappedBy = "employee")
   private Address address;
 
   public Address getAddress() {

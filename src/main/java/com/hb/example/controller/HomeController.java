@@ -21,8 +21,8 @@ import java.util.List;
 
 @Controller
 public class HomeController {
- @Autowired
- HomeService homeService;
+  @Autowired
+  HomeService homeService;
   @Autowired
   EmployeeDao employeeDao;
 
@@ -37,37 +37,42 @@ public class HomeController {
     return "employees";
   }
 
-@RequestMapping(value = "/addEmployee")
-public String employeeForm(Model model){
-  model.addAttribute("employee",new Employee());
-  return "addEmployee";
-}
+  @RequestMapping(value = "/addEmployee")
+  public String employeeForm(Model model) {
+    model.addAttribute("employee", new Employee());
+    return "addEmployee";
+  }
 
   @RequestMapping(value = "/employees/add")
-  public String addEmployees(Employee employee,Address address ,Model model) {
+  public String addEmployees(Employee employee, Address address, Model model) {
     System.out.println(employee);
     System.out.println(employee.getAddress());
-    model.addAttribute("employees",homeService.createEmployee(employee));
+    model.addAttribute("employees", homeService.createEmployee(employee));
     return "redirect:/employees";
   }
+
   @RequestMapping(value = "/deleteEmp/{Id}")
-  public String deleteEmployee(@PathVariable(value = "Id") int Id, Model model){
+  public String deleteEmployee(@PathVariable(value = "Id") int Id, Model model) {
     employeeDao.deleteEmployee(Id);
     return "redirect:/employees";
   }
+
   @RequestMapping(value = "/employees/{Id}")
   public String editEmployee(@PathVariable(value = "Id") int Id, Model model) {
     model.addAttribute("employee", homeService.employeeDetails(Id));
     return "editEmployee";
   }
+
   @RequestMapping(value = "/employees/update")
-  public String updateEmplyees(Employee employee,Address address, Model model) {
+  public String updateEmplyees(Employee employee, Address address, Model model) {
     employeeDao.updateEmployee(employee);
     return "redirect:/employees";
   }
-  @RequestMapping(value = "/search",produces = MediaType.APPLICATION_JSON_VALUE)
+
+  @RequestMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
-  public List<Employee> searchEmployee(@RequestParam(value = "name") String name){
+  public List<Employee> searchEmployee(@RequestParam(value = "name") String name) {
+    System.out.println("name: " + name);
     return employeeDao.searchEmployees(name);
   }
 }
