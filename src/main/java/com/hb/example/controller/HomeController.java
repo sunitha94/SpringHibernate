@@ -1,6 +1,7 @@
 package com.hb.example.controller;
 
 import com.hb.example.dao.EmployeeDao;
+import com.hb.example.model.Address;
 import com.hb.example.model.Employee;
 import com.hb.example.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-  @Autowired
-  HomeService homeService;
+ @Autowired
+ HomeService homeService;
   @Autowired
   EmployeeDao employeeDao;
 
@@ -33,7 +34,6 @@ public class HomeController {
   @RequestMapping(value = "/employees")
   public String employeeDetails(Model model) {
     model.addAttribute("employees", employeeDao.emplyeesList());
-
     return "employees";
   }
 
@@ -44,23 +44,24 @@ public String employeeForm(Model model){
 }
 
   @RequestMapping(value = "/employees/add")
-  public String addEmployees(Employee employee, Model model) {
+  public String addEmployees(Employee employee,Address address ,Model model) {
     System.out.println(employee);
+    System.out.println(employee.getAddress());
     model.addAttribute("employees",homeService.createEmployee(employee));
     return "redirect:/employees";
   }
-  @RequestMapping(value = "/deleteEmp/{empId}")
-  public String deleteEmployee(@PathVariable(value = "empId") int empId, Model model){
-    employeeDao.deleteEmployee(empId);
+  @RequestMapping(value = "/deleteEmp/{Id}")
+  public String deleteEmployee(@PathVariable(value = "Id") int Id, Model model){
+    employeeDao.deleteEmployee(Id);
     return "redirect:/employees";
   }
-  @RequestMapping(value = "/employees/{empId}")
-  public String addEmployee(@PathVariable(value = "empId") int empId, Model model) {
-    model.addAttribute("employee", homeService.employeeDetails(empId));
+  @RequestMapping(value = "/employees/{Id}")
+  public String editEmployee(@PathVariable(value = "Id") int Id, Model model) {
+    model.addAttribute("employee", homeService.employeeDetails(Id));
     return "editEmployee";
   }
   @RequestMapping(value = "/employees/update")
-  public String updateEmplyees(Employee employee, Model model) {
+  public String updateEmplyees(Employee employee,Address address, Model model) {
     employeeDao.updateEmployee(employee);
     return "redirect:/employees";
   }

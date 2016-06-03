@@ -18,21 +18,24 @@
 <input type="search" id="searchName">
 <input type="button" id="searchButton" value="search"></br></br>
 <body id="bd">
-<table id="tb">
+<table border="1"  border-collapse="collapse" id="tb">
   <thead id="th1">
   <tr>
     <th>Id</th>
     <th>Name</th>
-    <th>Action</th>
+    <th>street</th>
+    <th>city</th>
+    <th colspan="2">Action</th>
   </tr>
   </thead>
   <tbody id="empData">
   <c:forEach var="employee" items="${employees}">
     <tr>
-      <td>${employee.empid}</td>
+      <td>${employee.id}</td>
       <td>${employee.name}</td>
-      <td><a href="/deleteEmp/${employee.empid}">delete</a></td>
-      <td><a href="/employees/${employee.empid}">update</a></td>
+      <td>${employee.address.street}</td><td>${employee.address.city}</td>
+      <td><a href="/deleteEmp/${employee.id}">delete</a></td>
+      <td><a href="/employees/${employee.id}">update</a></td>
     </tr>
   </c:forEach>
   </tbody>

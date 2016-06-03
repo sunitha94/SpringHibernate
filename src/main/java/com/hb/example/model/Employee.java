@@ -10,16 +10,26 @@ import javax.persistence.*;
 public class Employee {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int empid;
+  private int id;
   @Column
   private String name;
+  @OneToOne(mappedBy = "employee",cascade = CascadeType.ALL,orphanRemoval = true)
+  private Address address;
 
-  public int getEmpid() {
-    return empid;
+  public Address getAddress() {
+    return address;
   }
 
-  public void setEmpid(int empid) {
-    this.empid = empid;
+  public void setAddress(Address address) {
+    this.address = address;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getName() {
@@ -33,7 +43,7 @@ public class Employee {
   @Override
   public String toString() {
     return "Employee{" +
-        "empid=" + empid +
+        "id=" + id +
         ", name='" + name + '\'' +
         '}';
   }

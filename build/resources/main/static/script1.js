@@ -6,7 +6,7 @@ $(document).ready(function () {
     var searchedName = $("#searchName").val();
       $.ajax({
         url: "/search",
-        data: {name: searchedName},
+        data: {name: searchedName}, 
         success: function (data) {
           console.log(data);
             var template;
@@ -14,9 +14,9 @@ $(document).ready(function () {
             for (var i = 0; i < data.length; i++) {
               console.log('name: ' + data[i]);
               template = +"<tr>" +
-                  "<td>" + data[i].empid + "</td>" +
+                  "<td>" + data[i].id + "</td>" +
                   "<td>" + data[i].name + "</td>" +
-                  "<td><a href='" + data[i].empid + "'>Delete</a> <a href='" + data[i].empid + "'>action</a></td>" +
+                  "<td><a href='" + data[i].id + "'>Delete</a> <a href='" + data[i].id + "'>action</a></td>" +
                   "</tr>"
             }
      if(template!=null){
