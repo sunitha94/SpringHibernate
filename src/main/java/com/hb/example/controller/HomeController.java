@@ -71,8 +71,10 @@ public class HomeController {
 
   @RequestMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
-  public List<Employee> searchEmployee(@RequestParam(value = "name") String name) {
-    System.out.println("name: " + name);
+  public List searchEmployee(@RequestParam(value = "name") String name) {
+    /*System.out.println("city: " + city);
+    System.out.println("employeName: "+homeService.searchEmployees(city).get(0).getEmployee().getName());
+    return homeService.searchEmployees(city);*/
     return employeeDao.searchEmployees(name);
   }
 }

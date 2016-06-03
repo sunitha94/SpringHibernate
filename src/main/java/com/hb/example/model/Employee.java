@@ -16,7 +16,7 @@ public class Employee {
   @Column
   private String name;
   @JsonManagedReference("employee-address")
-  @OneToOne(mappedBy = "employee",orphanRemoval = true)
+  @OneToOne(mappedBy = "employee", orphanRemoval = true)
   private Address address;
 
   public Address getAddress() {

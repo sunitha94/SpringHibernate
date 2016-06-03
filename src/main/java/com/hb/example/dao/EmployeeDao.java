@@ -42,7 +42,7 @@ public class EmployeeDao {
     Session session = sessionFactory.getCurrentSession();
     Criteria criteria = session.createCriteria(Employee.class);
     criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
-//    criteria.add(Restrictions.ilike("name", "s", MatchMode.ANYWHERE));
+    //criteria.add(Restrictions.ilike("name", "s", MatchMode.ANYWHERE));
     return criteria.list();
   }
 

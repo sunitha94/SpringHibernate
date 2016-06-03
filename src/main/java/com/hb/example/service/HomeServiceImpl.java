@@ -36,5 +36,10 @@ public class HomeServiceImpl implements HomeService {
   public Employee employeeDetails(int Id) {
     return employeeRepository.findOne(Id);
   }
+ /* public List searchEmployees(String city)
+  {
+    return  addressRepository.findByCity(city);
+  }
+*/
 }
 
