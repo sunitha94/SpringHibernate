@@ -18,7 +18,7 @@ public class Address {
   @Column(name = "city")
   private String city;
   @JsonBackReference("employee-address")
-  @OneToOne(fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.LAZY,orphanRemoval = true)
   @JoinColumn(name = "emp_id")
   private Employee employee;
 
