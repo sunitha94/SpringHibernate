@@ -15,8 +15,14 @@
 <form:form action="/employees/add" method="POST" modelAttribute="employee">
   Name: <form:input type="text" path="name" name="name"/><br/>
   Street:<form:input type="text" path="address.street" name="street"/><br/>
-  City : <form:input type="text" path="address.city" name="city"/><br/>
-<br/>
+  City : <form:select path="address.city" name="city">
+  <form:option value="city">city...</form:option>
+  <form:option value="hyderabad">hyderabad</form:option>
+  <form:option value="madhapur">madapur</form:option>
+</form:select><br/>
+  <form:radiobutton path="gender" value="female"/>female
+  <form:radiobutton path="gender" value="male"/>male
+  <br/>
   <input type="submit" value="add">
 </form:form>
 </body>

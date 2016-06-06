@@ -25,6 +25,7 @@
     <th>Name</th>
     <th>street</th>
     <th>city</th>
+    <th>Gender</th>
     <th colspan="2">Action</th>
   </tr>
   </thead>
@@ -34,6 +35,7 @@
       <td>${employee.id}</td>
       <td>${employee.name}</td>
       <td>${employee.address.street}</td><td>${employee.address.city}</td>
+      <td>${employee.gender}</td>
       <td><a href="/deleteEmp/${employee.id}">delete</a></td>
       <td><a href="/employees/${employee.id}">update</a></td>
     </tr>

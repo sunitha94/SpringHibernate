@@ -70,7 +70,7 @@ public class EmployeeDao {
     Session session = sessionFactory.getCurrentSession();
     Criteria criteria = session.createCriteria(Employee.class);
     criteria.add(Restrictions.ilike("name", name, MatchMode.ANYWHERE));
-    criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
+    //criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
     List<Employee> employee = criteria.list();
     return employee;
   }

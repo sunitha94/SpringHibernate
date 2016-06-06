@@ -17,8 +17,14 @@
   Name: <form:input type="text" path="name" name="name"/><br/>
   <form:input type="hidden" path="address.id" name="id"/>
   Street:<form:input type="text" path="address.street" name="street"/><br/>
-  City : <form:input type="text" path="address.city" name="city"/><br/>
-  <input type="submit" value="Update">
+  City : <form:select path="address.city" name="city">
+  <form:option value="city">city...</form:option>
+  <form:option value="hyderabad">hyderabad</form:option>
+  <form:option value="madhapur">madapur</form:option>
+</form:select><br/><br/>
+<form:radiobutton path="gender" value="female"/>female
+<form:radiobutton path="gender" value="male" />male
+ </br></br> <input type="submit" value="Update">
 </form:form>
 </body>
 </html>

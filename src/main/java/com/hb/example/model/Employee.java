@@ -15,10 +15,20 @@ public class Employee {
   private int id;
   @Column
   private String name;
+  @Column
+  private String gender;
+
+  public String getGender() {
+    return gender;
+  }
+
+  public void setGender(String gender) {
+    this.gender = gender;
+  }
+
   @JsonManagedReference("employee-address")
   @OneToOne(mappedBy = "employee", orphanRemoval = true)
   private Address address;
-
   public Address getAddress() {
     return address;
   }
@@ -48,6 +58,8 @@ public class Employee {
     return "Employee{" +
         "id=" + id +
         ", name='" + name + '\'' +
+        ", gender='" + gender + '\'' +
+        ", address=" + address +
         '}';
   }
 }
