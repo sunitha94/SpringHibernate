@@ -7,7 +7,7 @@ import com.hb.example.model.Employee;
  */
 public interface HomeService {
  Iterable<Employee> getAllEmployees();
- boolean createEmployee(Employee employee);
+ //boolean createEmployee(Employee employee);
  public Employee employeeDetails(int Id);
  //public List<Address> searchEmployees(String city);
 }

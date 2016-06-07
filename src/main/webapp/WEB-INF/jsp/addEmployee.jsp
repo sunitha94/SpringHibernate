@@ -23,6 +23,7 @@
   <form:radiobutton path="gender" value="female"/>female
   <form:radiobutton path="gender" value="male"/>male
   <br/>
+    Certificate : <form:input type="text" path="cname" name="cname"/><br/>
   <input type="submit" value="add">
 </form:form>
 </body>

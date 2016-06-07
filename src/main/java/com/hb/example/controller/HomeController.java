@@ -2,13 +2,16 @@ package com.hb.example.controller;
 
 import com.hb.example.dao.EmployeeDao;
 import com.hb.example.model.Address;
-import com.hb.example.model.Employee;
+import com.hb.example.model.Certificates;
 import com.hb.example.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -19,7 +22,7 @@ import java.util.List;
 @Controller
 public class HomeController {
   @Autowired
-  HomeService homeService;
+ HomeService homeService;
   @Autowired
   EmployeeDao employeeDao;
 
@@ -30,21 +33,22 @@ public class HomeController {
 
   @RequestMapping(value = "/employees")
   public String employeeDetails(Model model) {
+//    System.out.println("certificates: " + employeeDao.emplyeesList().get(0).getCertificatesList());
     model.addAttribute("employees", employeeDao.emplyeesList());
     return "employees";
   }
 
   @RequestMapping(value = "/addEmployee")
   public String employeeForm(Model model) {
-    model.addAttribute("employee", new Employee());
+    model.addAttribute("employee", new com.hb.example.formbeans.Employee());
     return "addEmployee";
   }
 
   @RequestMapping(value = "/employees/add")
-  public String addEmployees(Employee employee, Address address, Model model) {
+  public String addEmployees(com.hb.example.formbeans.Employee employee, Address address, Certificates certificates, Model model) {
     System.out.println(employee);
     System.out.println(employee.getAddress());
-    model.addAttribute("employees", homeService.createEmployee(employee));
+    model.addAttribute("employees", employeeDao.createEmployee(employee));
     return "redirect:/employees";
   }
 
@@ -61,8 +65,9 @@ public class HomeController {
   }
 
   @RequestMapping(value = "/employees/update")
-  public String updateEmplyees(Employee employee, Address address, Model model) {
+  public String updateEmplyees(com.hb.example.formbeans.Employee employee, Address address,@RequestParam(value = "cname") String cname,@RequestParam Model model) {
     employeeDao.updateEmployee(employee);
+//    System.out.println(employee);
     return "redirect:/employees";
   }
 

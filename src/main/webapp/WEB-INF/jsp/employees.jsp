@@ -18,7 +18,7 @@
 <input type="search" id="searchName">
 <input type="button" id="searchButton" value="search"></br></br>
 <body id="bd">
-<table border="1"  border-collapse="collapse" id="tb">
+<table border="1" border-collapse="collapse" id="tb">
   <thead id="th1">
   <tr>
     <th>Id</th>
@@ -26,6 +26,7 @@
     <th>street</th>
     <th>city</th>
     <th>Gender</th>
+    <th>Certificates</th>
     <th colspan="2">Action</th>
   </tr>
   </thead>
@@ -34,11 +35,18 @@
     <tr>
       <td>${employee.id}</td>
       <td>${employee.name}</td>
-      <td>${employee.address.street}</td><td>${employee.address.city}</td>
+      <td>${employee.address.street}</td>
+      <td>${employee.address.city}</td>
       <td>${employee.gender}</td>
+      <td><c:if test="${employee.certificatesList!=null}">
+        <c:forEach var="certificates" items="${employee.certificatesList}">
+          <c:out value="${certificates.cname}"/>
+        </c:forEach>
+      </c:if>
+    </td>
       <td><a href="/deleteEmp/${employee.id}">delete</a></td>
       <td><a href="/employees/${employee.id}">update</a></td>
-    </tr>
+      </tr>
   </c:forEach>
   </tbody>
 </table>

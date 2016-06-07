@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -24,6 +25,11 @@
 </form:select><br/><br/>
 <form:radiobutton path="gender" value="female"/>female
 <form:radiobutton path="gender" value="male" />male
+  <c:forEach items="${employee.certificatesList}">
+    <input type="text" id="1" path="cname" name="cname">
+    <input type="text" id="2" path="cname" name="cname">
+    <input type="text" id="3" path="cname" name="cname">
+  </c:forEach>
  </br></br> <input type="submit" value="Update">
 </form:form>
 </body>
