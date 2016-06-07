@@ -33,7 +33,7 @@ public class HomeController {
 
   @RequestMapping(value = "/employees")
   public String employeeDetails(Model model) {
-//    System.out.println("certificates: " + employeeDao.emplyeesList().get(0).getCertificatesList());
+// System.out.println("certificates: " + employeeDao.emplyeesList().get(0).getCertificatesList());
     model.addAttribute("employees", employeeDao.emplyeesList());
     return "employees";
   }
@@ -65,11 +65,12 @@ public class HomeController {
   }
 
   @RequestMapping(value = "/employees/update")
-  public String updateEmplyees(com.hb.example.formbeans.Employee employee, Address address,@RequestParam(value = "cname") String cname,@RequestParam Model model) {
+  public String updateEmplyees(com.hb.example.formbeans.Employee employee, Address address,@RequestParam(value="cname") String cname,Model model) {
+    System.out.println("certificate:"+cname);
     employeeDao.updateEmployee(employee);
 //    System.out.println(employee);
     return "redirect:/employees";
-  }
+}
 
   @RequestMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody

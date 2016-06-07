@@ -21,7 +21,7 @@ $(document).ready(function () {
               "<td>" + data[i].address.street +"</td>" +
               "<td>" + data[i].address.city +"</td>" +
               "<td>" + data[i].gender +"</td>" +
-              "<td>" + data[i].certificates.cname +"</td>" +
+              "<td>" + data[i].certificatesList[0].cname +"</td>" +
               "<td><a href='/deleteEmp/" + data[i].id + "'>Delete</a> <a href='/employees/" + data[i].id + "'>update</a></td>" +
               "</tr>"
         }

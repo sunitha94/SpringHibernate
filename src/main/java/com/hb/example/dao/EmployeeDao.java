@@ -84,7 +84,7 @@ public class EmployeeDao {
 
   public List searchEmployees(String name) {
     Session session = sessionFactory.getCurrentSession();
-    Criteria criteria = session.createCriteria(com.hb.example.formbeans.Employee.class);
+    Criteria criteria = session.createCriteria(Employee.class);
     criteria.add(Restrictions.ilike("name", name, MatchMode.ANYWHERE));
     //criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
     List<Employee> employee = criteria.list();

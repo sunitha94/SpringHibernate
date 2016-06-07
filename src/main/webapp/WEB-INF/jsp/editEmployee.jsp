@@ -24,13 +24,14 @@
   <form:option value="madhapur">madapur</form:option>
 </form:select><br/><br/>
 <form:radiobutton path="gender" value="female"/>female
-<form:radiobutton path="gender" value="male" />male
-  <c:forEach items="${employee.certificatesList}">
-    <input type="text" id="1" path="cname" name="cname">
-    <input type="text" id="2" path="cname" name="cname">
-    <input type="text" id="3" path="cname" name="cname">
-  </c:forEach>
- </br></br> <input type="submit" value="Update">
+<form:radiobutton path="gender" value="male" />male</br>
+ Certificates :
+  <c:if test="${employee.certificatesList!=null}">
+    <c:forEach var="certificates" items="${employee.certificatesList}">
+      <c:out value="${certificates.cname}"/>
+    </c:forEach>
+  </c:if>
+  </br></br> <input type="submit" value="Update">
 </form:form>
 </body>
 </html>

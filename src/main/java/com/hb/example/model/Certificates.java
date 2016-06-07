@@ -1,5 +1,7 @@
 package com.hb.example.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 /**
@@ -12,6 +14,7 @@ public class Certificates {
   @GeneratedValue
   private int id;
   private String cname;
+  @JsonBackReference("employee-certificate")
   @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "emp_id")
   private Employee employee;
