@@ -3,6 +3,7 @@ package com.hb.example.controller;
 import com.hb.example.dao.EmployeeDao;
 import com.hb.example.model.Address;
 import com.hb.example.model.Certificates;
+import com.hb.example.model.Employee;
 import com.hb.example.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -60,15 +61,20 @@ public class HomeController {
 
   @RequestMapping(value = "/employees/{Id}")
   public String editEmployee(@PathVariable(value = "Id") int Id, Model model) {
-    model.addAttribute("employee", homeService.employeeDetails(Id));
+    Employee employee=homeService.employeeDetails(Id);
+    com.hb.example.formbeans.Employee employee1=new com.hb.example.formbeans.Employee();
+    employee1.setCname(employee.getName());
+    employee1.setGender(employee.getGender());
+    employee1.setName(employee.getName());
+    employee1.setAddress(employee.getAddress());
+    model.addAttribute("employee",employee1);
     return "editEmployee";
   }
 
   @RequestMapping(value = "/employees/update")
-  public String updateEmplyees(com.hb.example.formbeans.Employee employee, Address address,@RequestParam(value="cname") String cname,Model model) {
-    System.out.println("certificate:"+cname);
+  public String updateEmplyees(com.hb.example.formbeans.Employee employee, Address address,Model model) {
     employeeDao.updateEmployee(employee);
-//    System.out.println(employee);
+System.out.println(employee);
     return "redirect:/employees";
 }
 

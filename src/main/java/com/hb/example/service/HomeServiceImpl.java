@@ -37,7 +37,6 @@ public class HomeServiceImpl implements HomeService {
     return true;
   }*/
   public Employee employeeDetails(int Id) {
-
     return employeeRepository.findOne(Id);
   }
 

@@ -15,22 +15,17 @@
 <body>
 <form:form action="/employees/update" method="POST" modelAttribute="employee">
   <form:input type="hidden" path="id"/>
-  Name: <form:input type="text" path="name" name="name"/><br/>
+  Name: <form:input type="text" path="name" name="name"/><br/><br/>
   <form:input type="hidden" path="address.id" name="id"/>
-  Street:<form:input type="text" path="address.street" name="street"/><br/>
-  City : <form:select path="address.city" name="city">
+  Street:<form:input type="text" path="address.street" name="street"/><br/><br/>
+  City : <form:select path="address.city" name="city"><br/><br/>
   <form:option value="city">city...</form:option>
   <form:option value="hyderabad">hyderabad</form:option>
   <form:option value="madhapur">madapur</form:option>
 </form:select><br/><br/>
 <form:radiobutton path="gender" value="female"/>female
 <form:radiobutton path="gender" value="male" />male</br>
- Certificates :
-  <c:if test="${employee.certificatesList!=null}">
-    <c:forEach var="certificates" items="${employee.certificatesList}">
-      <c:out value="${certificates.cname}"/>
-    </c:forEach>
-  </c:if>
+  Certificates :<form:input path="cname" name="cname"></form:input>
   </br></br> <input type="submit" value="Update">
 </form:form>
 </body>

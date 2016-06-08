@@ -65,11 +65,11 @@ public class EmployeeDao {
   }
 
   public boolean updateEmployee(com.hb.example.formbeans.Employee employee) {
-    System.out.println("employee : " + employee);
     Session session = sessionFactory.getCurrentSession();
     Employee employee1 = new Employee();
     employee1.setName(employee.getName());
     employee1.setGender(employee.getGender());
+    employee1.setAddress(employee.getAddress());
     Employee savedEmployee = employeeRepository.save(employee1);
     Certificates certificates = new Certificates();
     certificates.setCname(employee.getCname());
